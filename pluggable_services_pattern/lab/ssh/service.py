@@ -1,4 +1,4 @@
-from .clients import StandardSshClient
+from .client import SshClient
 
 
 class ClientNotSetUpException(Exception):
@@ -7,17 +7,15 @@ class ClientNotSetUpException(Exception):
 
 class SshService:
 
-    default_client = StandardSshClient
+    default_client = SshClient
 
     def __init__(self):
         self._client = None
 
     def set_up_client(self, *args, **kwargs):
-        print('Setting up SSH client')
         self._client = self.default_client(*args, **kwargs)
 
     def start(self):
-        print('Creating SSH connection')
         self._client.create_connection()
 
     def stop(self):

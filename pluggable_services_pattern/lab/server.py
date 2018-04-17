@@ -1,4 +1,4 @@
-from lab.ssh.mixins import MultipleSshMixin
+from .ssh.mixin import MultipleSshMixin
 
 
 class Server(MultipleSshMixin):
@@ -16,3 +16,12 @@ class Server(MultipleSshMixin):
     def get_disk_space(self, node=None):
         command = 'df'
         return self.run_ssh_command(command, node=node)
+
+    def shut_down(self):
+        self.stop_all_ssh_connections()
+
+    def __enter__(self):
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.shut_down()

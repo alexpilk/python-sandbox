@@ -1,4 +1,4 @@
-from .services import SshService
+from .service import SshService
 
 
 class MultipleSshMixin(object):
@@ -17,3 +17,12 @@ class MultipleSshMixin(object):
         node = self.get_ssh_node(node)
         service = self.ssh_connections[node]
         return service.client.execute_command(command)
+
+    def stop_ssh(self, node=None):
+        node = self.get_ssh_node(node)
+        service = self.ssh_connections[node]
+        return service.stop()
+
+    def stop_all_ssh_connections(self):
+        for node in self.ssh_connections:
+            self.ssh_connections[node].stop()

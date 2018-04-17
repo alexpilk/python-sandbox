@@ -1,5 +1,5 @@
-from lab import Server
-from lab import CustomServer
+from lab.server import Server
+from custom_lab import CustomServer
 
 
 def test_server(server):
@@ -13,10 +13,10 @@ def test_server(server):
 if __name__ == '__main__':
     node = 'node_7'
 
-    regular_server = Server('my_server', default_ssh_node=node)
-    print('--- Testing regular server ---')
-    test_server(regular_server)
+    print('--- Regular server example ---')
+    with Server('my_server', default_ssh_node=node) as my_server:
+        test_server(my_server)
 
-    custom_server = CustomServer('my_custom_server', default_ssh_node=node)
-    print('--- Testing custom server ---')
-    test_server(custom_server)
+    print('--- Regular server example ---')
+    with CustomServer('custom_server', default_ssh_node=node) as custom_server:
+        test_server(custom_server)
