@@ -5,7 +5,6 @@ Let's say you have a server you want to manage.
 For this purpose you create `lab.server.Server` class.
 You want to be able to connect to this server via SSH.
 For this you need `lab.ssh.client.SshClient`.
-Our imaginary client has the following methods: `create_connection`, `execute_command` and `disconnect`.
 To use it inside `Server` class you could create `self.ssh_client` attribute.
 But here is the problem: what if your `Server` class gets really big and only a few methods will need SSH?
 In this case - you don't know if the `Server` user needs SSH, so opening an SSH connection in `__init__` would be wasteful.
@@ -15,7 +14,7 @@ This way you can automatically open a connection whenever someone uses a method 
 But it can be improved further. Most probably your server will also use VNC, telnet and other stuff.
 You don't want to flood your `Server` class with methods for checking, opening and stopping connections.
 To avoid it - we can wrap the property with all SSH connection-related methods into the `Service` class.
-Now, in your `Server` you can have a `self.ssh_service` attribute. Then you can access the client property like this: `self.ssh_service.client`.
+Now, in your `Server` you can have `self.ssh_service` attribute. Then you can access the client property like this: `self.ssh_service.client`.
 Here are a few problems with this approach:
 1. You code gets really long e.g. `self.ssh_service.ssh_client.execute_command`
 2. You expose the client in the Server class.
