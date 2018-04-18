@@ -1,12 +1,11 @@
-# Python: What NOT to do
+# Python: what NOT to do
 
 ### Contents:
 1. __General__:
-Small common mistakes
+quick and common techniques for making your life harder
 2. __Simple access management__:
-Decorators can help avoid repeated code when managing
-access/connections/etc
+curing headache with decorators
 3. __Suppressing exceptions__:
-Less obvious ways of suppressing exceptions than `except Exception`
+less obvious ways of hiding exceptions than `except Exception`
 4. __Enabling warnings globally__:
-Simple guide to messing up everyone's logs in an obscure way.
+simple guide to messing up everyone's logs in an obscure fashion.

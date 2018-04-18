@@ -4,7 +4,7 @@ def check_if_even(number):
 
 
 try:
-    check_if_even('4')  # bug
+    check_if_even('4')  # bug, exception should be raised, 'not even' is printed instead
     print('even!')
-except Exception:
+except Exception:  # no other choice :(
     print('not even!')

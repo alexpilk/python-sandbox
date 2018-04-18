@@ -7,8 +7,9 @@ class Egg:
         self.smashed = True
 
 
-# Python is not a statically typed language
-# Don't make it look like it is by adding types to names
+# Python is not a statically typed language!
+# Don't make it look like it is by adding types to names!
+# Use type hints and docstrings if you need to
 def smash_eggs(egg_list):
     for egg in egg_list:
         egg.smash()

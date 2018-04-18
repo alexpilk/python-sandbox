@@ -31,10 +31,10 @@ class Freezer:
         if item.name in self.food:
             self.food[item.name].append(item)
         else:
-            self.food[item.name] = [item]  # manually creating one-element lists
+            self.food[item.name] = [item]  # manually creating one-element lists!
 
     def get(self, item_name):
-        if item_name not in self.food or not self.food[item_name]:  # more logic for nonexistent keys
+        if item_name not in self.food or not self.food[item_name]:  # more logic for nonexistent keys!
             raise FreezerItemNotFound('Item "{}" not found!'.format(item_name))
         return self.food[item_name].pop()
 

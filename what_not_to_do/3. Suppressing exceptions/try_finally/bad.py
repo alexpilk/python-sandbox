@@ -4,7 +4,7 @@ from resource import Box
 def remove_items(box, items_to_remove):
     protected_items = ['socks']
     removed_items = []
-    try:
+    try:  # function for removing items contains open/close functionality!
         box.open()
         for item in items_to_remove:
             if item not in protected_items:
