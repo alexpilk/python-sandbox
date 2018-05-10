@@ -34,9 +34,9 @@ class Computer:
         self.disk = HardDrive()
         self.apps = Applications()
 
-    def install_app(self, installer, *args, **kwargs):
-        app = installer(self, *args, **kwargs)
-        app.install()
+    def install_app(self, factory, *args, **kwargs):
+        app = factory(self, *args, **kwargs)
+        self.apps[app.name] = app
 
     def __getattr__(self, item):
         try:
@@ -47,21 +47,15 @@ class Computer:
 
 class App(object):
 
-    name = None
-
-    def __init__(self, computer):
+    def __init__(self, computer, name=None):
         self.computer = computer
-
-    def install(self):
-        self.computer.apps[self.name] = self
+        self.name = name
 
 
 class PdfReader(App):
 
-    name = 'pdf_reader'
-
-    def install(self):
-        super(PdfReader, self).install()
+    def __init__(self, computer, name='pdf_reader'):
+        super(PdfReader, self).__init__(computer, name)
         self.computer.disk.write('pdf reader data')
 
     def read_document(self, document):
@@ -70,11 +64,9 @@ class PdfReader(App):
 
 class VideoPlayer(App):
 
-    name = 'video_player'
-
-    def install(self):
-        super(VideoPlayer, self).install()
-        self.computer.disk.write('video player data')
+    def __init__(self, computer, name='video_player'):
+        super(VideoPlayer, self).__init__(computer, name)
+        self.computer.disk.write('pdf reader data')
 
     def play_video(self, video):
         self.computer.screen.display(video)
