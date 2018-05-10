@@ -25,11 +25,8 @@ class EggContainer:
     def __init__(self, *eggs):
         self.eggs = eggs
 
-    def __getitem__(self, item):
-        return self.eggs[item]
-
     def __iter__(self):
-        return self
+        return iter(self.eggs)
 
 
 # But if an EggContainer is passed, `egg_list` is no longer an appropriate name.

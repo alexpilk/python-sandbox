@@ -27,7 +27,7 @@ class EggContainer:
         return self.eggs[item]
 
     def __iter__(self):
-        return self
+        return iter(self.eggs)
 
 
 # This is also fine
