@@ -1,0 +1,1 @@
+# Define a custom exception
