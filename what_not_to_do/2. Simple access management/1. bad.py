@@ -1,32 +1,30 @@
-class BoxInaccessible(Exception):
+class BoxNotOpen(Exception):
     pass
 
 
 class Box:
 
     def __init__(self):
-        self._items = []
-        self.accessible = False
-
-    @property
-    def items(self):
-        if not self.accessible:
-            raise BoxInaccessible('Open the Box before using it')
-        return self._items
+        self.items = []
+        self.is_open = False
 
     def open(self):
-        self.accessible = True
+        self.is_open = True
         print('Box opened!')
 
     def close(self):
-        self.accessible = False
+        self.is_open = False
         print('Box closed!')
 
     def put(self, item):
+        if not self.is_open:  # repeated code!
+            raise BoxNotOpen('Open the Box before using it')
         self.items.append(item)
         print('Put {} into the box'.format(item))
 
     def remove(self, item):
+        if not self.is_open:  # repeated code!
+            raise BoxNotOpen('Open the Box before using it')
         self.items.remove(item)
         print('Removed {} from the box'.format(item))
 

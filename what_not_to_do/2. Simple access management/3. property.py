@@ -2,34 +2,30 @@ class BoxInaccessible(Exception):
     pass
 
 
-def require_open(method):
-    def wrapper(self, *args, **kwargs):
-        if not self.accessible:
-            raise BoxInaccessible('Open the Box before using it')
-        return method(self, *args, **kwargs)
-    return wrapper
-
-
 class Box:
 
     def __init__(self):
-        self.items = []
-        self.accessible = False
+        self._items = []
+        self.is_open = False
+
+    @property
+    def items(self):
+        if not self.is_open:
+            raise BoxInaccessible('Open the Box before using it')
+        return self._items
 
     def open(self):
-        self.accessible = True
+        self.is_open = True
         print('Box opened!')
 
     def close(self):
-        self.accessible = False
+        self.is_open = False
         print('Box closed!')
 
-    @require_open
     def put(self, item):
         self.items.append(item)
         print('Put {} into the box'.format(item))
 
-    @require_open
     def remove(self, item):
         self.items.remove(item)
         print('Removed {} from the box'.format(item))
