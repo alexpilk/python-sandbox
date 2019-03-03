@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "traceback.py", line 7, in <module>
+    raise TotallyUnexpectedException
+__main__.TotallyUnexpectedException
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "traceback.py", line 10, in <module>
+    undefined_function()
+NameError: name 'undefined_function' is not defined

@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "comparisons.py", line 15, in <module>
+    print(universe.pluto_is_a_planet())
+  File "comparisons.py", line 10, in pluto_is_a_planet
+    return self.planets > 8
+TypeError: '>' not supported between instances of 'NoneType' and 'int'
