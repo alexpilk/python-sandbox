@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 
 
 def catch_strings(possible_string):
@@ -9,7 +8,4 @@ def catch_strings(possible_string):
 
 
 catch_strings('a')
-catch_strings('ą')
 catch_strings(4)
-
-print('ą')
