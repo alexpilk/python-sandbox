@@ -1,5 +1,5 @@
 name = 'Oleksii'
-company = 'Nokia'
+company = 'Perceptyx'
 job = 'software developer'
 hobbies = ['playing prog metal', 'irritating people']
 
